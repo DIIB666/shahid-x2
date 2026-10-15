@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Shahid Speed Controller",
+  "version": "1.0.0",
+  "description": "Control HTML5 video playback speed on Shahid (0.5x – 2.5x). Quick 1x/2x toggle, remembers your speed across episodes. No data collection, no DRM bypass.",
+  "minimum_chrome_version": "88",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.shahid.mbc.net/*",
+    "https://*.shahid.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Shahid Speed Controller",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.shahid.mbc.net/*", "https://*.shahid.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "commands": {
+    "toggle-1x-2x": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "Toggle playback speed between 1x and 2x on Shahid"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahid Speed Controller // root access</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="card">
+    <header class="term-bar" aria-hidden="true">
+      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <span class="term-title">root@shahid:~ ./speed_controller --inject</span>
+      <div class="live-dot" id="liveDot" title="Content-script status"></div>
+    </header>
+
+    <header class="header">
+      <div class="logo" aria-hidden="true">&gt;_<span>2X</span></div>
+      <div class="title-wrap">
+        <h1 class="title"><span class="prompt">➜</span> SHAHID_SPEED_CTRL</h1>
+        <p class="subtitle">[+] exploit loaded :: playback override v1.0.0</p>
+      </div>
+    </header>
+
+    <section class="current" aria-live="polite">
+      <span class="current-label">&gt; current_rate --get</span>
+      <span class="current-value"><span id="currentSpeed">1×</span><span class="cursor">▊</span></span>
+    </section>
+
+    <!-- Hero 2x payload -->
+    <button id="btnHero" class="hero" title="Jump straight to 2x">
+      <span class="hero-big">[ EXECUTE 2X_PAYLOAD ]</span>
+      <span class="hero-sub">./inject --rate 2.0 --force // bypass limit</span>
+    </button>
+
+    <div class="section-label" aria-hidden="true">── available payloads ──</div>
+    <section class="grid" id="speedGrid" role="group" aria-label="Playback speeds">
+      <!-- Buttons injected by popup.js from SPEEDS list -->
+    </section>
+
+    <div class="row">
+      <button id="btnToggle" class="ghost" title="Toggle between 1x and 2x (Alt+Shift+S)">
+        [⇄] ./toggle.sh 1X &lt;-&gt; 2X
+      </button>
+    </div>
+    <p class="hint"><span class="prompt">&gt;</span> hotkey: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> — remap @ <span class="mono">chrome://extensions/shortcuts</span></p>
+
+    <div id="status" class="status info" role="status">[*] scanning target page…</div>
+
+    <footer class="footer">
+      <span>[✓] auto-persist: ON</span>
+      <span class="dot-sep">|</span>
+      <span>[✓] exfil: OFF — 100% local</span>
+    </footer>
+    <div class="credit">made by <span class="credit-name">METALLICOS</span></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
